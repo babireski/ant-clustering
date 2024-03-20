@@ -1,6 +1,6 @@
 class Item:
     def __init__(self):
-        self.position = None
+        self.place = None
 
     def distance(self, other):
         pass

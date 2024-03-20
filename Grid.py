@@ -1,28 +1,24 @@
-import Ant
-import Item
+from Ant import Ant
 
 import random
 
 class Grid:
-    def __init__(self, size, data, population, sight, steps):
-        self.size  = size
-        self.data  = data
-        self.population = population
+    def __init__(self, side, size):
+        self.side = side
+        self.size = size
+        self.data = []
         self.ants = []
-        self.sight = sight
-        self.steps = steps
+        self.setup()
 
     def setup(self):
-            height, width = self.size
-            coordinates = random.choices([(a, b) for a in range(height) for b in range(width)], k = len(self.data))
+            coordinates = random.choices([(a, b) for a in range(self.side) for b in range(self.side)], k = self.size[0])
             for coordinate in coordinates:
-                for item in self.data:
-                    item.position = coordinate
-            coordinates = random.choices([(a, b) for a in range(height) for b in range(width)], k = self.population)
+                self.data.append(coordinate)
+            coordinates = random.choices([(a, b) for a in range(self.side) for b in range(self.side)], k = self.size[1])
             for coordinate in coordinates:
-                self.ants.append(Ant(coordinate))
+                self.ants.append(Ant(1, coordinate))
 
     def run(self):
-        while self.steps:
+        while True:
             for ant in self.ants:
                 ant.act()
