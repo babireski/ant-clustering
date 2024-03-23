@@ -8,12 +8,10 @@ screen = pygame.display.set_mode((side, side))
 pygame.display.set_caption('Antclusterer')
 clock = pygame.time.Clock()
 running = True
-grid = Grid(10, (5, 5))
-
-print(grid.data)
+grid = Grid(50, (500, 100))
 
 def draw():
-    block = 50
+    block = 10
     screen.fill('white')
     for datum in grid.data:
         x, y = datum
@@ -34,6 +32,7 @@ while running:
             running = False
     draw()
     pygame.display.flip()
-    clock.tick(60)
+    grid.run()
+    # clock.tick(60)
 
 pygame.quit()
