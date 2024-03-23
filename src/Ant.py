@@ -11,12 +11,12 @@ class Ant:
         return self.place == other.place
 
     def work(self, grid):
-        self.drop(grid) if self.state else self.grab(grid)
+        self.drop(grid) if self.state else self.pick(grid)
         neighbours = [place for place in self.neighbours(grid) if place not in map(lambda ant: ant.place, grid.ants)]
         if len(neighbours) > 0:
             self.place = random.choice(neighbours)
 
-    def grab(self, grid):
+    def pick(self, grid):
         if self.place in grid.data:
             similarity = self.similarity(grid)
             probability = (self.k[0] / (self.k[0]) + similarity) ** 2
