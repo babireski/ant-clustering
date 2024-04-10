@@ -43,3 +43,4 @@ class Grid:
                 if self.iteration in self.plots:
                     plotter.plot()
                 self.step()
+            plotter.plot()

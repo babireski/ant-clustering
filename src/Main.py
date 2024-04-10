@@ -1,5 +1,3 @@
-import pygame
-
 import Body
 import Grid
 import Item
@@ -13,7 +11,7 @@ data = Reader.Reader(file, Item.Item, colormap, clusters, normalize = True).data
 # data = [Body.Body() for _ in range(500)]
 size = (50, 50)
 population = 50
-iterations = 1000000
+iterations = 500000
 
-grid = Grid.Grid(size, population, data, iterations, clusters, plots = [0, 200000, 400000, 600000, 800000, 1000000])
+grid = Grid.Grid(size, population, data, iterations, clusters, plots = [0, 250000])
 grid.run()

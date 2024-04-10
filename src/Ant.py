@@ -52,6 +52,8 @@ class Ant:
         for place in neighbours:
             neighbour = grid.data[place]
             similarity = similarity + (1 - datum.distance(neighbour) / self.alpha)
-        if len(neighbours):
-            similarity = similarity / len(neighbours) ** 2 
+        # if len(neighbours):
+        #     similarity = similarity / len(neighbours) ** 2 
+        vision = (self.sight * 2 + 1) ** 2 - 1
+        similarity = similarity / vision **2
         return similarity if similarity > 0 else 0
